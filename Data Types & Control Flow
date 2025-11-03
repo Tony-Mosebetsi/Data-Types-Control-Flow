@@ -1,0 +1,282 @@
+1. Data Types Implementation
+/// **********************************************
+
+void main() {
+  // Define Variables: int, double, String, bool, and List.
+  print('--- 1. Data Types Implementation & Initialization ---');
+
+  // 1. int (Whole number)
+  int age = 28;
+  print('My age (int): $age');
+
+  // 2. double (Decimal number) - Using Rands (ZAR)
+  double priceInUSD = 99.99;
+  double exchangeRate = 17.29; // Approximate current exchange rate (USD to ZAR)
+  double price = priceInUSD * exchangeRate; 
+  
+  // Using the Rands symbol (R) and formatting to 2 decimal places
+  print('Product price (double) in Rands: R${price.toStringAsFixed(2)}'); 
+
+  // 3. String (Text)
+  String userName = 'SohCodesDart';
+  print('Username (String): "$userName"');
+
+  // 4. bool (True or False)
+  bool isDartFun = true;
+  print('Is Dart fun? (bool): $isDartFun');
+
+  // 5. List (Collection of items)
+  List<String> fruits = ['Apple', 'Banana', 'Cherry'];
+  print('Favorite fruits (List<String>): $fruits');
+
+  print('\n--- 2. Type Conversion Functions ---');
+
+  // Example calls for the conversion functions
+  String numberAsString = '42';
+  int numberAsInt = 150;
+
+  // String to int and double
+  int convertedIntFromString = convertStringToInt(numberAsString);
+  double convertedDoubleFromString = convertStringToDouble(numberAsString);
+  print('String "$numberAsString" converted to Int: $convertedIntFromString');
+  print('String "$numberAsString" converted to Double: $convertedDoubleFromString');
+
+  // int to String and double
+  String convertedStringFromInt = convertIntToString(numberAsInt);
+  double convertedDoubleFromInt = convertIntToDouble(numberAsInt);
+  print('Int $numberAsInt converted to String: "$convertedStringFromInt"');
+  print('Int $numberAsInt converted to Double: $convertedDoubleFromInt');
+
+  print('\n--- 3. Function for Conversion and Display ---');
+  // Call the required function with an example string
+  convertAndDisplay('3.14159');
+
+
+  /// **********************************************
+  /// 4. Control Flow
+  /// **********************************************
+
+  print('\n--- 4. Control Flow Examples ---');
+
+  // If-Else Statements: Positive, Negative, or Zero Check
+  checkNumberSign(10);
+  checkNumberSign(-5);
+  checkNumberSign(0);
+  
+  // If-Else Statements: Voting Eligibility Check
+  checkVotingEligibility(25);
+  checkVotingEligibility(17);
+
+  // Switch Case: Day of the Week
+  print('\n**Switch Case: Day of the Week**');
+  printDayOfWeek(3); // Wednesday
+  printDayOfWeek(6); // Saturday
+  printDayOfWeek(9); // Invalid Day
+
+  // Loops Implementation
+  print('\n**Loops Implementation**');
+  
+  // For Loop: 1 to 10
+  print('\n*For Loop (1 to 10):*');
+  printNumbersForLoop();
+  
+  // While Loop: 10 to 1
+  print('\n*While Loop (10 to 1):*');
+  printNumbersWhileLoop();
+
+  // Do-While Loop: 1 to 5
+  print('\n*Do-While Loop (1 to 5):*');
+  printNumbersDoWhileLoop();
+
+  
+  /// **********************************************
+  /// 5. Combining Data Types and Control Flow
+  /// **********************************************
+
+  print('\n--- 5. Complex Example: List Iteration and Categorization ---');
+  complexListAnalysis();
+}
+
+// ----------------------------------------------------------------------
+// Helper Functions for Data Type Conversion
+// ----------------------------------------------------------------------
+
+// Convert a String to int (using int.tryParse for safety)
+int convertStringToInt(String str) {
+  return int.tryParse(str) ?? 0;
+}
+
+// Convert a String to double
+double convertStringToDouble(String str) {
+  return double.tryParse(str) ?? 0.0;
+}
+
+// Convert an int to String
+String convertIntToString(int num) {
+  return num.toString();
+}
+
+// Convert an int to double
+double convertIntToDouble(int num) {
+  return num.toDouble();
+}
+
+// ----------------------------------------------------------------------
+// Function for Conversion and Display
+// ----------------------------------------------------------------------
+
+void convertAndDisplay(String numberString) {
+  print('Input String: "$numberString"');
+
+  // Convert to int
+  int? asInt = int.tryParse(numberString);
+  
+  // Convert to double
+  double? asDouble = double.tryParse(numberString);
+
+  if (asInt != null) {
+    print('Converted to int: $asInt');
+  } else {
+    print('Conversion to int failed.');
+  }
+
+  if (asDouble != null) {
+    print('Converted to double: $asDouble');
+  } else {
+    print('Conversion to double failed.');
+  }
+}
+
+// ----------------------------------------------------------------------
+// Control Flow Functions
+// ----------------------------------------------------------------------
+
+// If-Else Statements: Check if a number is positive, negative, or zero.
+void checkNumberSign(int number) {
+  if (number > 0) {
+    print('Number $number is **Positive**.');
+  } else if (number < 0) {
+    print('Number $number is **Negative**.');
+  } else {
+    print('Number $number is **Zero**.');
+  }
+}
+
+// If-Else Statements: Voting Eligibility Check
+void checkVotingEligibility(int age) {
+  if (age >= 18) {
+    print('At age $age, the person **is eligible** to vote.');
+  } else {
+    print('At age $age, the person **is NOT eligible** to vote (needs to be 18+).');
+  }
+}
+
+// Switch Case: Print the day of the week
+void printDayOfWeek(int day) {
+  String dayName;
+  switch (day) {
+    case 1:
+      dayName = 'Monday ☕';
+      break;
+    case 2:
+      dayName = 'Tuesday 🌮';
+      break;
+    case 3:
+      dayName = 'Wednesday 🐪';
+      break;
+    case 4:
+      dayName = 'Thursday ⏳';
+      break;
+    case 5:
+      dayName = 'Friday 🎉';
+      break;
+    case 6:
+      dayName = 'Saturday 🥳';
+      break;
+    case 7:
+      dayName = 'Sunday 😴';
+      break;
+    default:
+      dayName = 'Invalid Day Input!';
+  }
+  print('Day input $day corresponds to: **$dayName**');
+}
+
+// For loop: 1 to 10
+void printNumbersForLoop() {
+  for (int i = 1; i <= 10; i++) {
+    stdout.write('$i '); 
+  }
+  print(''); 
+}
+
+// While loop: 10 to 1
+void printNumbersWhileLoop() {
+  int i = 10;
+  while (i >= 1) {
+    stdout.write('$i ');
+    i--; 
+  }
+  print('');
+}
+
+// Do-While loop: 1 to 5
+void printNumbersDoWhileLoop() {
+  int i = 1;
+  do {
+    stdout.write('$i ');
+    i++; 
+  } while (i <= 5);
+  print('');
+}
+
+// ----------------------------------------------------------------------
+// Complex Example: List Iteration and Categorization
+// ----------------------------------------------------------------------
+
+void complexListAnalysis() {
+  // Define a List of int numbers
+  List<int> numbers = [7, 50, 102, 2, 99, 1100, 15, 0];
+  print('List to analyze: $numbers');
+
+  // Use a for loop to iterate through the list
+  for (int number in numbers) {
+    print('\n--- Analyzing Number: $number ---');
+
+    // Use if-else statements to check if the number is even or odd
+    if (number % 2 == 0) {
+      print('  - Status: **Even**');
+    } else {
+      print('  - Status: **Odd**');
+    }
+
+    // Implements a switch statement to categorize numbers
+    String category;
+    
+    if (number >= 1 && number <= 10) {
+      category = 'Small (1-10)';
+    } else if (number >= 11 && number <= 100) {
+      category = 'Medium (11-100)';
+    } else if (number >= 101) {
+      category = 'Large (101+)';
+    } else if (number == 0) {
+      category = 'Zero/Edge Case';
+    } else {
+        category = 'Negative or Error';
+    }
+
+    // Print the category
+    switch(category) {
+      case 'Small (1-10)':
+        print('  - Category: **Small** (1-10) 🤏');
+        break;
+      case 'Medium (11-100)':
+        print('  - Category: **Medium** (11-100) 💪');
+        break;
+      case 'Large (101+)':
+        print('  - Category: **Large** (101+) 🚀');
+        break;
+      default:
+        print('  - Category: **${category}** (Special Case)');
+    }
+  }
